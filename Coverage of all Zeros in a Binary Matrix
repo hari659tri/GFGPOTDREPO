@@ -1,3 +1,5 @@
+// cover all zero means you have a need to print the all adjacent one left right top down and when ever encounter 1 then increment it by one
+
 class Solution {
   public:
     int findCoverage(vector<vector<int>>& matrix) {
