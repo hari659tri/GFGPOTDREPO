@@ -1,0 +1,67 @@
+# The Palindrome Pattern
+class Solution {
+  public:
+
+    string pattern(vector<vector<int>> &arr) {
+        // Code Here
+        int row=arr.size();
+        int col=arr[0].size();
+        bool flag;
+        string ans="";
+        for(int i=0;i<col;i++){
+            int s=i;
+            int e=col-1;
+            int k=0;
+             flag=true;
+            while(k<e){
+                if(arr[s][k]!=arr[s][e]){
+                    flag=false;
+                    break;
+                }
+                k++;
+                e--;
+            }
+            if(flag==true){
+                ans=ans+to_string(s);
+                break;
+            }
+        }
+        
+         if(ans.size()>0){
+             ans=ans+" ";
+             ans=ans+'R';
+             return ans;
+         }
+
+        for(int i=0;i<row;i++){
+           int s=i;
+            int e=row-1;
+            int k=0;
+            flag=true;
+            while(k<e){
+                if(arr[k][s]!=arr[e][s]){
+                    flag=false;
+                    break;
+                }
+                k++;
+                e--;
+            }
+            if(flag==true){
+                ans=ans+to_string(s);
+                break;
+            }
+         }
+         
+         if(ans.size()>0){
+             ans=ans+" ";
+             ans=ans+'C';
+             return ans;
+         }
+         
+        
+          
+    return "-1";
+    
+            
+    }
+};
