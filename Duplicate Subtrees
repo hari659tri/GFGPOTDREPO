@@ -1,0 +1,34 @@
+class Solution {
+  public:
+   
+   string genrate(Node* root,vector<Node*>&ans,map<string,int>&count){
+       
+       if(root==NULL) 
+        return "";
+        string str=to_string(root->data)+"#"+genrate(root->left,ans,count)+"#"+genrate(root->right,ans,count);
+        
+        if(++count[str]==2){
+            ans.push_back(root);
+        }
+        
+        return str;
+   }
+  
+  
+  
+  
+  
+    vector<Node*> printAllDups(Node* root) {
+        // Code here
+        vector<Node*>ans;
+        map<string,int>count;
+        
+        genrate(root,ans,count);
+        
+        
+         return ans;
+        
+        
+        
+    }
+};
