@@ -1,0 +1,50 @@
+class Solution {
+  public:
+    // Function to return a list of integers denoting the node
+    // values of both the BST in a sorted order.
+   
+    
+     void s1(Node*r1,vector<int>&in1){
+         if(r1==NULL)
+          return ;
+          
+          s1(r1->left,in1);
+          in1.push_back(r1->data);
+          s1(r1->right,in1);
+          
+     }
+    
+    vector<int> merge(Node *root1, Node *root2) {
+        // Your code here
+        vector<int>ans;
+        vector<int>in1;
+        vector<int>in2;
+        s1(root1,in1);
+        s1(root2,in2);
+        int left=0;
+        int right=0;
+        while(left<in1.size()&&right<in2.size()){
+            if(in1[left]<=in2[right]){
+                ans.push_back(in1[left]);
+             left++;
+            }
+            else{
+                ans.push_back(in2[right]);
+              right++;
+            }
+        }
+        
+        while(left<in1.size()){
+            ans.push_back(in1[left]);
+            left++;
+        }
+        
+        while(right<in2.size()){
+            ans.push_back(in2[right]);
+            right++;
+        }
+         
+        return ans;
+        
+    }
+};
